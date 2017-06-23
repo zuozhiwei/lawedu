@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.myfss.lawedu.persistence.StudentMapper">
+
+	<!-- 获取作业列表 -->
+	<select id="getAssignmentList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.name,t1.score,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+		t2.name,t2.assignmentTask
+		FROM
+		assignment t1 LEFT JOIN course_video t2 ON t1.courseVideoId=t2.id
+		where t1.fromId = #{fromId}
+	</select>
+
+	<!-- 获取考试题目列表 -->
+	<select id="getExamQuestionList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.no,t1.question,t1.answera,t1.answerb,t1.answerc,t1.answerd,t1.answer
+		FROM
+		exam_question t1
+		where t1.examId = #{examId}
+		ORDER BY (t1.no + 0) ASC
+	</select>
+
+    <!-- 获取考试结果列表 -->
+    <select id="getExamInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        t1.score,t1.examId,
+        t2.name
+        FROM
+        user_exam t1 LEFT JOIN exam_list t2 ON t1.examId = t2.id
+        where t1.userId = #{userId}
+    </select>
+
+    <!-- 获取证书列表 -->
+    <select id="getCertificateInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        t1.certificateId,t1.certificateName,
+        t2.score
+        FROM
+        exam_list t1 LEFT JOIN  user_exam t2 ON t1.id = t2.examId
+        where t2.userId = #{userId}
+        AND (t2.score + 0) >= ${score}
+    </select>
+
+    <!-- 获取招标项目列表 -->
+    <select id="getBidProjectList" parameterType="java.util.HashMap"
+            resultType="java.util.HashMap">
+        SELECT
+        t1.id, t1.projectName,t1.description, date_format(t1.beginTime,'%Y-%m-%d %H:%i:%s') as beginTime, date_format(t1.endTime,'%Y-%m-%d %H:%i:%s') as endTime,
+        t2.userName
+        FROM
+        project t1 LEFT JOIN user t2 ON t1.addUser = t2.id
+        WHERE t1.id IN (SELECT projectId FROM project_user WHERE userId = #{userId})
+        <if test="status != ''">
+            AND
+                t1.status = #{status}
+        </if>
+    </select>
+
+    <!-- 获取用户列表 -->
+    <select id="getStudentInfo" resultType="java.util.HashMap">
+        SELECT
+        t1.id, t1.userName, t1.password, t1.mobile, t1.idCard, t1.checkMark, date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+        t1.role, t1.gender, date_format(t1.birth,'%Y-%m-%d') as birth
+        FROM
+        user t1
+        WHERE t1.id = #{userId}
+    </select>
+
+    <!-- 判断题目正误 -->
+    <select id="checkExamQuestion" resultType="java.util.HashMap">
+        SELECT
+        t1.*
+        FROM
+        exam_question t1
+        WHERE t1.answer = #{answer} AND t1.id = #{questionID}
+    </select>
+</mapper>

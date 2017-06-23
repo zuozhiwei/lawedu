@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/headerfoot.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/sweetalert/sweetalert.css"/>
+
+    <title>留言管理</title>
+    <style type="text/css">
+        .panel{
+            width:1200px;
+            margin: 0 auto;
+            min-width: 1200px;
+        }
+        .answer-every{
+            border: 1px solid gray;
+            padding:10px;
+        }
+    </style>
+    <script type="text/html" id="temp1">
+        {{each qaList as qaList1 i}}
+            <div class="form-group answer-every">
+                <div class="askask">
+                    问：<span>{{qaList1.content}}</span>
+                </div>
+                <div class="ansans">
+                    答：<span>{{qaList1.reply}}</span>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+</head>
+<body>
+<div id="header">
+    <div id="nav_top">
+        <img src="resources/img/logo.png" />
+        <div id="nav_top_content">
+            <a href="home.html">首页</a>
+            <a href="courseCategory.html">课程学习</a>
+            <a href="test.html">考试模块</a>
+            <a href="teacher.html">知名教师</a>
+            <a href="publish.html">科研发表</a>
+            <a href="message.html">留言提问</a>
+        </div>
+        <div id="nav_top_btnss">
+            <button type="button" class="btn btn-default" id="register" onclick="window.location.href='login.html'">登录注册</button>
+        </div>
+        <div id="logafter1" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person1.html"></a></div>
+        <div id="logafter2" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person2.html"></a></div>
+        <div id="logout" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px">退出登录</div>
+    </div>
+</div>
+<div style="margin-top: 110px"></div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">律师列表</h3>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table id="lawyer_list" class="display">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>头像</th>
+                <th>描述</th>
+                <th>荣誉</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<!--打开提问模态框-->
+<div class="modal fade" id="askBox" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel">添加</h4>
+            </div>
+            <div style="width: 90%;margin: 10px auto;">
+                <form class="form-horizontal" id="articleCheckForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">提问内容</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="DataInput form-control" name="content" id="ask_content" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="sunbmitAsk()">提问</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--打开查看问题模态框-->
+<div class="modal fade" id="showAnswerBox" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel">回答内容</h4>
+            </div>
+            <div style="width: 90%;margin: 10px auto;">
+                <form class="form-horizontal" id="showMessage">
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="resources/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/template.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/logs.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/sweetalert/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function () {
+        getLawyerList();
+    })
+
+    function getLawyerList () {
+        $.ajax({
+            type : "POST",
+            url : lawedu + "user/getLawyerList",
+            dataType : "json",
+            data : {},
+            success : function(data) {
+//                console.log(data);
+                $('#lawyer_list').DataTable({
+                    data : data.list,
+                    destroy : true,
+                    "columns" : [ {
+                        data : "id"
+                    }, {
+                        data : "userName"
+                    }, {
+                        data : "gender"
+                    }, {
+                        data : "url"
+                    }, {
+                        data : "description"
+                    }, {
+                        data : "honor"
+                    }, {
+                        data : null
+                    }
+                    ],
+                    "columnDefs": [
+                        {
+                            "render" : function(data, type, row, meta){
+                                if(data == "0"){
+                                    return '保密'
+                                }else if(data == "1"){
+                                    return '男'
+                                }else if(data == "2"){
+                                    return '女'
+                                }
+                            },
+                            "targets" : 2
+                        },
+                        {
+                            "render" : function(data, type, row, meta){
+                                var btnHTML = '';
+                                btnHTML += '<button type="button" onclick="askBox(\''+row.id+'\')" class="btn btn-primary">提问</button> ';
+                                btnHTML += '<button type="button" onclick="showAnswerBox(\''+row.id+'\')" class="btn btn-warning">查看回答</button> ';
+                                return btnHTML;
+                            },
+                            "targets" : 6
+                        },
+                        {
+                            "render" : function(data, type, row, meta){
+                                if(typeof data == "undefined") {
+                                    return ''
+                                }
+                                return data;
+                            },
+                            "targets" : [0,1,2,3,4,5,6]
+                        }
+                    ],
+                    language : {
+                        "processing" : "处理中...",
+                        "lengthMenu" : "显示 _MENU_ 项结果",
+                        "zeroRecords" : "没有匹配结果",
+                        "info" : "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                        "infoEmpty" : "显示第 0 至 0 项结果，共 0 项",
+                        "infoFiltered" : "(由 _MAX_ 项结果过滤)",
+                        "infoPostFix" : "",
+                        "search" : "搜索:",
+                        "url" : "",
+                        "emptyTable" : "没有数据",
+                        "loadingRecords" : "载入中...",
+                        "infoThousands" : "20",
+                        "paginate" : {
+                            "first" : "首页",
+                            "previous" : "上页",
+                            "next" : "下页",
+                            "last" : "末页"
+                        }
+                    }
+                });
+            },error : function () {
+                swal("提示","网络错误");
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    /**
+     * 打开提问框
+     */
+    var lawyerId1;
+    function askBox(lawyerID) {
+        lawyerId1 = lawyerID;
+        $('#askBox').modal({});
+    }
+
+    /**
+     * 提交提问问题
+     */
+    function sunbmitAsk() {
+            var data = {};
+            data.content = $('#ask_content').val();
+            data.lawyerID = lawyerId1;
+        $.ajax({
+            type : "POST",
+            url :lawedu + "user/addLawQuestion",
+            dataType : "text",
+            data : data,
+            success : function(data) {
+                swal("提示", "提问成功", "success");
+                $('#askBox').modal('hide');
+                getLawyerList();
+            },
+            error : function(e) {
+                swal("提示", "网络错误");
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    /**
+     * 打开查看信息模态框
+     */
+    var lawyerId1;
+    function showAnswerBox(lawyerID) {
+        lawyerId1 = lawyerID;
+        $.ajax({
+            type : "POST",
+            url :lawedu + "user/getLawQuestionList",
+            dataType : "json",
+            data : {
+                "toId":lawyerId1
+            },
+            success : function(data) {
+                console.log(data);
+                var qalist = data.list;
+                var obj1 = qalist;
+                var html1 = template("temp1",{qaList:obj1});
+                $("#showMessage").html(html1);
+            },
+            error : function(e) {
+                swal("提示", "网络错误");
+            }
+        });
+        $('#showAnswerBox').modal({});
+    }
+
+</script>
+
+</body>
+</html>

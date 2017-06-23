@@ -1,0 +1,53 @@
+#science-paper{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 10px;
+	padding-top:100px;
+}
+#science-paper .list-group{
+	width: 200px;
+	line-height: 20px;
+	font-size: 16px;
+	text-align: center;
+	display: inline-block;
+	margin-top:30px;
+}
+
+#science-paper .sicence-content{
+	display: inline-block;
+	vertical-align: top;
+	width: 800px;
+	padding: 10px 50px;
+}
+#science-paper button{
+	display: inline-block;
+	margin-left: 600px;
+	margin-top: -20px;
+	margin-bottom: 10px;
+}
+#science-paper .paper-content{
+	display: none;
+	height: 215px;
+	width: 800px;
+	vertical-align: top;
+	padding: 10px 50px;
+}
+
+#science-paper ol a{
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 300px;
+	vertical-align: middle;
+	font-size: 16px;
+	line-height: 35px;
+}
+#science-paper ol{
+	padding-left: 20px;
+}
+#science-paper ol li{
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 10px;
+}

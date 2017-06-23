@@ -1,0 +1,198 @@
+@CHARSET "UTF-8";
+
+*{
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma,
+		"Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+}
+
+/* 统一样式 */
+input,textarea,select {  
+    border:1px solid #ccc;  
+    font-family:inherit;  
+    font-size:inherit;  
+    *font-size:100%;
+    font-weight:inherit;  
+    outline:none;  
+    -moz-border-radius:1px;
+    -webkit-border-radius:1px;
+    border-radius:1px;
+}
+
+/* 查询按钮 */
+.query-btn {
+	background: #5997EC;
+	border: 0px;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	box-shadow: -1px 1px 2px #c5c6ca;
+}
+/* 文本输入框 */
+.query-textinput {
+	width:120px;
+	height:22px;
+	border:1px solid #95B8E7;
+	border-radius:4px;
+	padding-left:5px;
+	outline:none;
+}
+/* 日期输入框 */
+.query-dateinput {
+	width:120px;
+	height:18px;
+	border:1px solid #95B8E7;
+	border-radius:3px;
+	padding-left:5px;
+	outline:none;
+}
+/* 下拉菜单 */
+.query-selectlist {
+	width:128px;/* 比其他input稍长 */
+	height:21px;/* 比其他input高 */
+	border:1px solid #95B8E7;
+	border-radius:3px;
+	background-color: #fff;
+}
+
+/* 数据分析页选择按钮 */
+.analyse-checkbox {
+	float: left;
+	margin: 3px;
+	padding: 3px 5px;
+	border: 1.5px solid #d0d0d0;
+	border-radius:4px;
+	text-align: center;
+	color: #a2a2a2;
+	cursor:pointer;
+}
+
+/* 数据分析页选择按钮选中 */
+.analyse-checkbox-select {
+	border: 1.5px solid #6a99e4;
+	border-radius:4px;
+	color: #6a99e4;
+}
+
+/* 数据分析页选择按钮-单选 */
+.analyse-radio {
+position: relative;
+    padding: 5px 5px !important;
+	float: left;
+	margin: 3px;
+	border: 1px solid #d0d0d0;
+	border-radius:4px;
+	text-align: center;
+	color: #a2a2a2;
+	cursor:pointer;
+}
+
+.analyse-radio-style {
+	position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+	float: left;
+	margin: 3px;
+	border: 1px solid #769bba !important;
+	border-radius:4px;
+	text-align: center;
+	color: #337AB7;
+	cursor:pointer;
+}
+
+.analyse-radio-select {
+/* 	background-color:#faa42a;
+	color:white; */
+	border: 1.5px solid #6a99e4;
+	border-radius:4px;
+	color: #6a99e4;
+}
+/* 数据分析页选择按钮-单选模拟标签 */
+.analyse-tab-radio {
+	float: left;
+	margin: 0px;
+	padding: 3px 5px;
+	border: 0px;
+	color: #a2a2a2;
+	text-align: center;
+	cursor:pointer;
+}
+
+.analyse-tab-radio-select {
+	color:#3f80e5;
+	border-bottom: 2px solid #3f80e5;
+}
+
+/* 中央悬浮框 */
+.centerbox {
+	text-align: center;
+	border: 2px solid #90c2f1;
+	color: #6c6c6c;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -15px, 0, 0, -90px;
+}
+
+/* 通用顶栏 */
+.topbar {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	box-shadow:  0 1px 1px #777777;
+	padding: 0px;
+}
+
+/* 侧栏按钮 */
+#sidebtn {
+	position:absolute;
+	top:300px;
+	right:-25px;
+	text-align:center;
+	width: 25px;
+	height: 45px;
+	background:#b8b8b8;
+	color: #f6f6f6;
+	cursor: pointer;
+}
+
+/* 查询分组 */
+.query-group {
+	border:1px solid #7cb8f4;
+	margin: 5px 20px 5px 5px;
+	padding: 10px;
+	border-radius:5px;
+}
+.query-groupname {
+	margin-left:30px;
+	margin-top:-21px;
+	color:#7cb8f4;
+}
+.query-groupname span{
+	padding:0 10px 0 10px;
+	background: #FCFCFC;
+}
+
+/* 遮罩层 */
+.loadingshade {
+	background-color: rgba(255,255,255,.8);
+	-webkit-filter: blur(4px);
+}
+
+/*信息页导航*/
+.info-topnav {
+	padding: 5px;
+	box-shadow:0 1px 3px #757575;
+	margin-bottom: 10px;
+}
+
+.info-topnav .navbar-nav li {
+	margin:5px;
+	vertical-align: middle;
+}
+
+.info-topnav .nav-middle{
+	display: inline-block;
+	padding: 6px 12px;
+}
+

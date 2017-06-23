@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.myfss.lawedu.persistence.manager.UserManagerMapper">
+	
+	<!-- 管理员用户登录验证 -->
+	<select id="checkUserLogin" parameterType="java.util.HashMap"  resultType="java.util.HashMap">
+		SELECT
+			t1.id,t1.userName
+		FROM
+		 	user t1
+		WHERE
+			t1.mobile = #{mobile}
+		AND
+			t1.password = #{password}
+		AND
+			t1.role = #{role}
+	</select>
+
+	<!-- 获取用户列表 -->
+	<select id="getUserList" resultType="java.util.HashMap">
+		SELECT
+		    t1.id, t1.userName, t1.password, t1.mobile, t1.idCard, t1.checkMark, date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+		    t1.role, t1.gender, date_format(t1.birth,'%Y-%m-%d %H:%i:%s') as birth
+		FROM
+		    user t1
+	</select>
+
+	<!-- 获取分类列表 -->
+	<select id="getCategoryList" resultType="java.util.HashMap">
+		SELECT
+			t1.*
+		FROM
+			category t1
+	</select>
+	
+	<!-- 获取考试列表 -->
+	<select id="getExamList" resultType="java.util.HashMap">
+		SELECT
+		    t1.id, t1.name, t1.certificateId, t1.certificateName
+		FROM
+		    exam_list t1
+	</select>
+	
+	
+	<!-- 获取作业列表 -->
+	<select id="getAssignmentList" resultType="java.util.HashMap">
+		SELECT 
+			t1.id, t1.name, t1.fromId, t1.fileUrl, t1.score, 
+			date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime, t1.courseVideoId,t2.userName AS studentName ,
+			t3.name as courseVideoName 
+		FROM 
+			assignment t1, user t2 ,course_video t3
+		WHERE 
+			t1.fromId = t2.id	AND t1.courseVideoId = t3.id
+	</select>
+	
+	
+	<!-- 获取成果列表 -->
+	<select id="getArticleList" resultType="java.util.HashMap">
+		SELECT 
+			t1.id, t1.name, t1.addUser, t1.description, 
+			date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime, t2.userName AS addName
+		FROM 
+			article t1, user t2
+		WHERE 
+			t1.addUser = t2.id
+	</select>
+	
+	<!-- 获取成绩证书列表 -->
+	<select id="getUserCertificatesList" resultType="java.util.HashMap">
+		SELECT 
+			t1.id, t1.examId, t1.userId, t1.score, 
+			t2.userName AS studentName,t3.certificateId,t3.certificateName,
+			t3.name as examName
+		FROM 
+			user_exam t1, user t2,exam_list t3
+		WHERE 
+			t1.userId = t2.id AND t1.examId = t3.id
+	</select>
+
+	<!-- 获取课程分类列表 -->
+	<select id="getCourseCategoryList" resultType="java.util.HashMap">
+		SELECT
+		t1.*
+		FROM
+		category t1
+	</select>
+	
+	<!-- 获取留言列表 -->
+	<select id="getMessageList" resultType="java.util.HashMap">
+		SELECT
+		date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+		t1.*,t2.userName as fromName,t3.userName as toName
+		FROM
+		message t1,user t2,user t3
+		WHERE
+		t1.fromId = t2.id
+		and t1.toId = t3.id
+		AND ISNULL(t1.parentId)
+	</select>
+
+	<!-- 获取系统日志 -->
+	<select id="getLogList" resultType="java.util.HashMap">
+		SELECT
+		date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+		t1.id,t1.userId, t1.info,
+		t2.userName AS name
+		FROM
+		sys_log t1 LEFT JOIN user t2 ON t1.userId = t2.id
+		ORDER BY (t1.id + 0) DESC
+	</select>
+
+	<!-- 获取分类列表 -->
+	<select id="getMenuList" resultType="java.util.HashMap">
+		SELECT
+		t1.*
+		FROM
+		menu t1
+	</select>
+
+</mapper>

@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+
+* {
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma,
+		"Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+}
+
+input,button,select,textarea{outline:none}
+
+.compatibility {
+	position:absolute;
+	width: 100%;
+	height: 50px;
+	background-color: #ffbb03;
+	padding: 6px 20px 0 20px;
+	color: #535353;
+	font-size: 14px;
+	font-weight: bold;
+	z-index: 100;
+}
+
+.compatibility a {
+	font-weight: bold;
+}
+
+body {
+	background: url(../images/login-bg.jpg) center center no-repeat !important;
+	background-attachment: fixed !important;
+	background-size: cover !important;
+}
+
+header {
+	width: 100%;
+    height: 20vh;
+    min-height: 90px;
+    background: url(../images/nav_logo.png) center center no-repeat;
+    background-size: auto 30%;
+    margin: 20px auto;
+}
+
+footer {
+	margin: 30px auto;
+	width: 100%;
+    color: #fbfbfb;
+    text-align: center;
+}
+
+/* 登陆框 */
+.loginbox {
+	width: 480px;
+	height: auto;
+    min-height: 340px;
+    margin: 7vh auto;
+    padding:0 !important;
+	background-color: #fff;
+    -webkit-box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    opacity: 1;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+/* 标题栏 */
+.loginbox-title {
+	font-size: 18px;
+    color: #fdfdfd;
+    background: #116615;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    padding: 0 20px;
+    margin: 0;
+}
+
+/* 登录按钮 */
+.login-btn {
+	width: 80px;
+	height: 35px;
+	background: #116615;
+	color:#f8f8f8;
+	border:0px;
+	border-radius: 5px;
+}
+.login-btn:hover {
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+/* 输入框 */
+.login-input {
+	font-size:16px;
+	width: 100%;
+	margin: 10px 0;
+	border:0px;
+	background:0;
+	color:#000000;
+	border-bottom: 1px solid #b9b9b9;
+}
+

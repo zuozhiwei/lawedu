@@ -1,0 +1,29 @@
+#test_list{
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 110px;
+
+}
+.test-content{
+	height: 135px;
+	padding: 10px;
+	margin-top: 20px;
+	border: 1px solid #44A9FD;
+}
+.test-content img{
+	width: 110px;
+	height: 110px;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+.test-content .test-info{
+	vertical-align: middle;
+	display: inline-block;
+}
+.test-content button{
+	margin-top: 80px;
+	float: right;
+}
+.test-content p span{
+	color: #333;
+}

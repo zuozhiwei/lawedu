@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/headerfoot.css"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/jquery.dataTables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="resources/sweetalert/sweetalert.css"/>
+
+	<title>考试列表</title>
+	<style type="text/css">
+		.panel{
+			width:1200px;
+			margin: 0 auto;
+			min-width: 1200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div id="nav_top">
+			<img src="resources/img/logo.png" />
+			<div id="nav_top_content">
+				<a href="home.html">首页</a>
+				<a href="courseCategory.html">课程学习</a>
+				<a href="test.html">考试模块</a>
+				<a href="teacher.html">知名教师</a>
+				<a href="publish.html">科研发表</a>
+				<a href="message.html">留言提问</a>
+			</div>
+			<div id="nav_top_btnss">
+				<button type="button" class="btn btn-default" id="register" onclick="window.location.href='login.html'">登录注册</button>
+			</div>
+			<div id="logafter1" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person1.html"></a></div>
+			<div id="logafter2" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person2.html"></a></div>
+			<div id="logout" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px">退出登录</div>
+		</div>
+	</div>
+	<div style="margin-top: 110px"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">考试列表</h3>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="" style="margin-top: 20px;"></div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<table id="table_exam" class="display">
+				<thead>
+				<tr>
+					<th>考试编号</th>
+					<th>考试名称</th>
+					<th>证书编号</th>
+					<th>证书名称</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<!--<div id="nav-bottom">-->
+		<!--<div class="nav-bottom-content">-->
+			<!--<div class="infors">-->
+				<!--<p>Copyright© 2017 my467.top All rights reserved 技术运营支持：my467团队</p>-->
+				<!--<p>冀公网安备 42018502000485号   冀ICP备13001992号</p>-->
+			<!--</div>-->
+			<!--<table  border="" cellspacing="" cellpadding="">-->
+				<!--<tr>-->
+					<!--<th>关于我们</th>-->
+					<!--<th>开放平台</th>-->
+					<!--<th>帮助反馈</th>-->
+					<!--<th>服务支持</th>-->
+					<!--<th>联系我们</th>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td>公司简介</td>-->
+					<!--<td>开发者首页</td>-->
+					<!--<td>在线客服</td>-->
+					<!--<td>服务条款</td>-->
+					<!--<td>服务网点</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td>业务定位</td>-->
+					<!--<td>开发者注册</td>-->
+					<!--<td>问题反馈</td>-->
+					<!--<td>运营支持</td>-->
+					<!--<td>商务合作</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td>资质证书</td>-->
+					<!--<td>开发者文档</td>-->
+					<!--<td>帮助中心</td>-->
+					<!--<td>应用监控</td>-->
+					<!--<td></td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td></td>-->
+					<!--<td>开发者协议</td>-->
+					<!--<td></td>-->
+					<!--<td>后台管理</td>-->
+					<!--<td></td>-->
+				<!--</tr>-->
+			<!--</table>-->
+		<!--</div>-->
+	<!--</div>-->
+	<script src="resources/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/url.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/logs.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/sweetalert/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//进入考试详情界面
+        function enterExam(obj) {
+            window.location.href = "testDetail.html?id="+obj;
+        }
+		getExamList();
+        function getExamList () {
+            $.ajax({
+                type : "POST",
+                url :lawedu + "manager/getExamList",
+                dataType : "json",
+                data : {},
+                success : function(data) {
+//                    console.log(data);
+                    $('#table_exam').DataTable({
+                        data : data,
+                        destroy : true,
+                        "columns" : [ {
+                            data : "id"
+                        }, {
+                            data : "name"
+                        }, {
+                            data : "certificateId"
+                        }, {
+                            data : "certificateName"
+                        }, {
+                            data : null
+                        } ],
+                        "columnDefs": [
+                            {
+                                "render" : function(data, type, row, meta){
+                                    var btnHTML = '';
+                                    btnHTML += '<button type="button" onclick="enterExam(\''+row.id+'\')" class="btn btn-primary">开始考试</button> ';
+                                    return btnHTML;
+                                },
+                                "targets" : 4
+                            },
+                            {
+                                "render" : function(data, type, row, meta){
+                                    if(typeof data == "undefined") {
+                                        return ''
+                                    }
+                                    return data;
+                                },
+                                "targets" : [0,1,2,3,4]
+                            }
+                        ],
+                        language : {
+                            "processing" : "处理中...",
+                            "lengthMenu" : "显示 _MENU_ 项结果",
+                            "zeroRecords" : "没有匹配结果",
+                            "info" : "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                            "infoEmpty" : "显示第 0 至 0 项结果，共 0 项",
+                            "infoFiltered" : "(由 _MAX_ 项结果过滤)",
+                            "infoPostFix" : "",
+                            "search" : "搜索:",
+                            "url" : "",
+                            "emptyTable" : "没有数据",
+                            "loadingRecords" : "载入中...",
+                            "infoThousands" : "20",
+                            "paginate" : {
+                                "first" : "首页",
+                                "previous" : "上页",
+                                "next" : "下页",
+                                "last" : "末页"
+                            }
+                        }
+                    });
+                },error : function () {
+                    swal("提示","网络错误");
+                }
+            });
+        }
+	</script>
+
+</body>
+</html>

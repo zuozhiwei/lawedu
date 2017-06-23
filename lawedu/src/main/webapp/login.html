@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>法学教育平台登录注册</title> 
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link href="resources/css/login.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<h1>法学教育平台登录注册<sup>V2017</sup></h1>
+		<div class="login" style="margin-top:50px;">
+		    <div class="header">
+		        <div class="switch" id="switch">
+		        	<a class="switch_btn_focus" id="switch_qlogin" href="javascript:void(0);" tabindex="7">快速登录</a>
+					<a class="switch_btn" id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a>
+					<div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 64px; left: 0px;">
+						
+					</div>
+		        </div>
+		    </div>    
+		  
+		    <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">    
+		        <!--登录-->
+		        <div class="web_login" id="web_login">
+		            <div class="login-box">
+						<div class="login_form">
+<!--							<form action="" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">-->
+								<input type="hidden" name="did" value="0"/>
+		            			<input type="hidden" name="to" value="log"/>
+		            			<div class="uinArea" id="uinArea">
+			            			<label class="input-tips" for="u">手机：</label>
+			            			<div class="inputOuter" id="uArea">
+			                			<input type="text" id="u" name="username" class="inputstyle" placeholder="请输入手机号"/>
+			            			</div>
+		            			</div>
+					            <div class="pwdArea" id="pwdArea">
+					                <label class="input-tips" for="p">密码：</label> 
+					                <div class="inputOuter" id="pArea">
+					                    <input type="password" id="p" name="p" class="inputstyle" placeholder="请输入密码"/>
+					                </div>
+					            </div>
+					            <div style="padding-left:50px;margin-top:20px;">
+					            	<input type="submit" value="登 录" style="width:150px;" id="login_btn" class="button_blue"/>
+					            </div>
+		           			<!--</form>-->
+		           		</div>
+		            </div>
+		        </div>
+		        <!--登录end-->
+		    </div>
+		  	<!--注册-->
+		    <div class="qlogin" id="qlogin" style="display: none; ">
+		    	<div class="web_login">
+		    		<!--<form name="form2" id="regUser" accept-charset="utf-8"  action="" method="post">-->
+				        <input type="hidden" name="to" value="reg"/>
+					    <input type="hidden" name="did" value="0"/>
+			        	<ul class="reg_form" id="reg-ul">
+			        		<div id="userCue" class="cue">快速注册请注意格式</div>
+			                <li>
+			                    <label for="user"  class="input-tips2">用户名：</label>
+			                    <div class="inputOuter2">
+			                        <input type="text" id="user" name="user" maxlength="16" class="inputstyle2" placeholder="请输入用户名"/>
+			                    </div>
+			                </li>
+			                <li>
+			                	<label for="passwd" class="input-tips2">密码：</label>
+			                    <div class="inputOuter2">
+			                        <input type="password" id="passwd"  name="passwd" maxlength="16" class="inputstyle2" placeholder="请输入密码"/>
+			                    </div>
+			                </li>
+			                <li>
+			                	<label for="passwd2" class="input-tips2">确认密码：</label>
+			                    <div class="inputOuter2">
+			                        <input type="password" id="passwd2" name="" maxlength="16" class="inputstyle2" placeholder="请确认密码"/>
+			                    </div>
+			                </li>
+			                <!--<li>
+			                 	<label for="qq" class="input-tips2">QQ：</label>
+			                    <div class="inputOuter2">
+			                        <input type="text" id="qq" name="qq" maxlength="10" class="inputstyle2"/>
+			                    </div>
+			                </li>-->
+			                <li>
+			                 	<label for="tel" class="input-tips2">手机号：</label>
+			                    <div class="inputOuter2">
+			                        <input type="text" id="tel" name="tel" maxlength="11" class="inputstyle2" placeholder="请输入手机号"/>
+			                    </div>
+			                </li>
+			                <li>
+			                 	<label for="IDcard" class="input-tips2">身份证号：</label>
+			                    <div class="inputOuter2">
+			                        <input type="text" id="IDcard" name="IDcard" maxlength="18" class="inputstyle2" placeholder="请输入身份证号"/>
+			                    </div>
+			                </li>
+			                <li>
+			                 	<label for="gender_select" class="input-tips2">性别：</label>
+			                    <div class="inputOuter2">
+			                        <select id="gender_select">
+			                        	<option value="0">保密</option>
+			                        	<option value="1">男</option>
+			                        	<option value="2">女</option>
+			                        </select>
+			                    </div>
+			                </li>
+			                <li>
+			                 	<label for="birthday" class="input-tips2">出生年月：</label>
+			                    <div class="inputOuter2">
+			                        <input type="text" id="birthday" name="birthday" class="inputstyle2" onclick="laydate()" placeholder="单击选择出生年月">
+			                    </div>
+			                </li>
+			                <li>
+			                 	<label for="type_select" class="input-tips2">身份：</label>
+			                    <div class="inputOuter2">
+			                        <select id="type_select">
+			                        	<option value="4">我是律师</option>
+			                        	<option value="2">我是教师</option>
+			                        	<option value="1">我是学生</option>
+			                        	<option value="3">我是社会人士</option>
+			                        </select>
+			                    </div>
+			                </li>
+			                <li>
+			                    <div class="inputArea">
+			                        <input type="button" id="reg"  style="margin-top:10px;margin-left:85px;" class="button_blue" value="同意协议并注册"/> <a href="#" class="zcxy" target="_blank">注册协议</a>
+			                    </div>
+			                </li>
+			                <div class="cl"></div>
+			            </ul>
+		    		<!--</form>-->
+		    	</div>
+		    </div>
+		    <!--注册end-->
+		</div>
+		<div class="jianyi">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>
+		<div class="jianyi">版权所有：河北工业大学</div>
+		<script type="text/javascript" src="resources/js/jquery-2.1.0.js"></script>
+		<script src="resources/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/js/url.js" type="text/javascript" charset="utf-8"></script>
+		<script src="resources/laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="resources/js/login.js"></script>
+	</body>
+</html>

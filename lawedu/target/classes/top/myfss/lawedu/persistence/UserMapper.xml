@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.myfss.lawedu.persistence.UserMapper">
+
+	<!-- 登陆验证 -->
+	<select id="checkUserLogin" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.role,t1.userName
+		FROM user t1
+		where t1.mobile = #{mobile}
+		and t1.password = #{password}
+	</select>
+
+	<!-- 用户手机号查重 -->
+	<select id="checkMobile" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		t1.id
+		FROM
+		user t1
+		WHERE
+		t1.mobile = #{mobile}
+	</select>
+
+	<!-- 获取理论课程列表 -->
+	<select id="getCourseTheoryList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.name,t1.content,t1.categoryId, DATE_FORMAT(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.url
+		FROM
+		course_theory t1
+	</select>
+
+	<!-- 获取视频课程列表 -->
+	<select id="getCourseVideoList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.name,t1.description,t1.categoryId,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.url,t1.assignmentTask,t1.videoUrl,
+		t2.userName as teacherName
+		FROM
+		course_video t1 LEFT JOIN info_teacher t2 ON t1.teacherId = t2.id
+	</select>
+
+	<!-- 获取实践课程列表 -->
+	<select id="getCoursePracticeList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.name,t1.content,t1.categoryId,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.url
+		FROM
+		course_practice t1
+	</select>
+	
+	<!-- 获取理论课程详情 -->
+	<select id="getCourseTheoryInfo" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.name,t1.content,t1.categoryId,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.url
+		FROM
+		course_theory t1
+		WHERE
+		t1.id = #{courseTheoryId}
+	</select>
+
+	<!-- 获取实践课程详情 -->
+	<select id="getCoursePracticeInfo" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		t1.id,t1.name,t1.content,t1.categoryId,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.url
+		FROM
+		course_practice t1
+		WHERE
+		t1.id = #{coursePracticeId} 
+	</select>
+
+	<!-- 获取视频课程详情 -->
+	<select id="getCourseVideoInfo" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+        SELECT
+        t1.id, t1.name, t1.url, t1.categoryId, t1.description, t1.assignmentTask, date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.url,t1.videoUrl,
+        t2.userName as teacherName
+        FROM
+        course_video t1 LEFT JOIN user t2 ON t1.teacherId = t2.id
+        WHERE
+        t1.id = #{courseVideoId}
+    </select>
+
+	<!-- 获取提问列表 -->
+	<select id="getQuestionList" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		t1.id, t1.content, date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,t1.toId,t1.fromId,
+		t2.userName,t3.name as courseName
+		FROM
+		ask t1 LEFT JOIN user t2 ON t1.fromId = t2.id,
+		course_video t3
+		WHERE
+		t1.toId = t3.id
+		<if test="courseId != ''">
+			AND
+			t1.toId = #{courseId}
+		</if>
+	</select>
+
+	<!-- 获取成果列表 -->
+	<select id="getArticleList" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		t1.id, t1.name, date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+		t1.description,t1.addUser,t2.userName
+		FROM
+		article t1 LEFT JOIN user t2 ON t1.addUser = t2.id
+		WHERE t1.addUser = #{userID}
+	</select>
+
+	<!-- 获取律师列表 -->
+	<select id="getLawyerList" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		t1.id, t1.userName, t1.gender,
+		t1.url, t1.description,t1.honor
+		FROM
+		info_lawyer t1
+	</select>
+
+	<!-- 获取提问问题列表 -->
+	<select id="getLawQuestionList" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		t1.id, t1.fromId, t1.toId,t1.content,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime
+		FROM
+		message t1
+		WHERE 1
+		<if test="toId != ''">
+			AND
+			t1.toId = #{toId}
+		</if>
+		<if test="fromId != ''">
+			AND
+			t1.fromId = #{fromId}
+		</if>
+	</select>
+
+	<!-- 获取新闻列表 -->
+	<select id="getNewsList" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		t1.id, t1.title, t1.content,date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime
+		FROM
+		news t1
+	</select>
+
+	<select id="getReplyLawQuestionList" parameterType="java.util.HashMap"
+			resultType="java.util.HashMap">
+		SELECT
+		date_format(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime,
+		t1.*,t2.userName as fromName,t3.userName as toName
+		FROM
+		message t1,user t2,user t3
+		WHERE
+		t1.fromId = t2.id
+		and t1.toId = t3.id
+		AND parentId = #{id}
+	</select>
+</mapper>

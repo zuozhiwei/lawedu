@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生个人主页</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/headerfoot.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/sweetalert/sweetalert.css"/>
+    <style type="text/css">
+        .panel{
+            width:1200px;
+            margin: 0 auto;
+            min-width: 1200px;
+        }
+        #infospan span{
+            display: inline-block;
+            width:150px;
+            margin-top: 10px;
+            text-align:center;
+        }
+        #infospan button{
+            display: inline-block;
+            width:150px;
+            margin-left: 40%;
+            margin-top:20px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="header">
+    <div id="nav_top">
+        <img src="resources/img/logo.png" />
+        <div id="nav_top_content">
+            <a href="home.html">首页</a>
+            <a href="courseCategory.html">课程学习</a>
+            <a href="test.html">考试模块</a>
+            <a href="teacher.html">知名教师</a>
+            <a href="publish.html">科研发表</a>
+            <a href="message.html">留言提问</a>
+        </div>
+        <div id="nav_top_btnss">
+            <button type="button" class="btn btn-default" id="register" onclick="window.location.href='login.html'">登录注册</button>
+        </div>
+        <div id="logafter1" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person1.html"></a></div>
+        <div id="logafter2" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person2.person3.html"></a></div>
+        <div id="logout" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px">退出登录</div>
+    </div>
+</div>
+<div style="margin-top: 110px"></div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">考试成绩</h3>
+    </div>
+    <div class="panel-body">
+        <table id="table_userCertificates" class="display">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>学生编号</th>
+                <th>学生姓名</th>
+                <th>考试编号</th>
+                <th>考试名称</th>
+                <th>考试得分</th>
+                <th>证书编号</th>
+                <th>证书名称</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">个人信息管理</h3>
+    </div>
+    <div class="panel-body" id="infospan">
+        <span>id    </span><input id="ids" type="text" disabled>
+        <span>手机号 </span><input id="mobiles" type="text" disabled>
+        <span>用户名 </span><input id="userNames" type="text"><br>
+        <span>身份证 </span><input id="idCards" type="text" disabled>
+        <span>生日   </span><input type="text" id="births" onclick="laydate()">
+        <span>性别   </span><input id="genders" type="text" placeholder="男 或 女 或保密"><br>
+        <span>添加时间</span><input id="addTimes" type="text" disabled><br>
+        <button type="button" class="btn btn-info" id="subStudent">提交修改</button>
+    </div>
+</div>
+
+<script src="resources/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/laydate/laydate.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/logs.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/sweetalert/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/person1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    getUserCertificatesList();
+    function getUserCertificatesList () {
+        $.ajax({
+            type : "POST",
+            url : lawedu + "manager/getUserCertificatesList",
+            dataType : "json",
+            data : {},
+            success : function(data) {
+//                console.log(data);
+                $('#table_userCertificates').DataTable({
+                    data : data,
+                    destroy : true,
+                    "columns" : [ {
+                        data : "id"
+                    }, {
+                        data : "userId"
+                    }, {
+                        data : "studentName"
+                    }, {
+                        data : "examId"
+                    },{
+                        data : "examName"
+                    }, {
+                        data : "score"
+                    }, {
+                        data : "certificateId"
+                    }, {
+                        data : "certificateName"
+                    } ],
+                    "columnDefs": [
+                        {
+                            "render" : function(data, type, row, meta){
+                                if(typeof data == "undefined") {
+                                    return ''
+                                }
+                                return data;
+                            },
+                            "targets" : [0,1,2,3,4,5,6,7]
+                        }
+                    ],
+                    language : {
+                        "processing" : "处理中...",
+                        "lengthMenu" : "显示 _MENU_ 项结果",
+                        "zeroRecords" : "没有匹配结果",
+                        "info" : "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                        "infoEmpty" : "显示第 0 至 0 项结果，共 0 项",
+                        "infoFiltered" : "(由 _MAX_ 项结果过滤)",
+                        "infoPostFix" : "",
+                        "search" : "搜索:",
+                        "url" : "",
+                        "emptyTable" : "没有数据",
+                        "loadingRecords" : "载入中...",
+                        "infoThousands" : "20",
+                        "paginate" : {
+                            "first" : "首页",
+                            "previous" : "上页",
+                            "next" : "下页",
+                            "last" : "末页"
+                        }
+                    }
+                });
+            },error : function () {
+                swal("提示","网络错误");
+            }
+        });
+    }
+</script>
+</body>
+</html>

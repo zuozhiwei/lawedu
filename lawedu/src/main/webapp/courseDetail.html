@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程详情</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/courseDetail.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/headerfoot.css"/>
+    <style type="text/css">
+        .questionEvery{
+            border:1px solid lightgrey;
+            padding:10px;
+        }
+        #ask{
+            padding:10px;
+            text-align: center;
+        }
+        #ask textarea{
+            width:600px;
+            height:50px;
+        }
+    </style>
+    <script type="text/html" id="temp1">
+    {{each questionList as questionList1 i}}
+        <div class="questionEvery">
+            <span>{{questionList1.userName}}：</span>
+            <span>{{questionList1.addTime}}</span>
+            <p>{{questionList1.content}}</p>
+        </div>
+    {{/each}}
+    </script>
+</head>
+<body>
+<div id="header">
+    <div id="nav_top">
+        <img src="resources/img/logo.png" />
+        <div id="nav_top_content">
+            <a href="home.html">首页</a>
+            <a href="courseCategory.html">课程学习</a>
+            <a href="test.html">考试模块</a>
+            <a href="teacher.html">知名教师</a>
+            <a href="publish.html">科研发表</a>
+            <a href="message.html">留言提问</a>
+        </div>
+        <div id="nav_top_btnss">
+            <button type="button" class="btn btn-default" id="register" onclick="window.location.href='login.html'">登录注册</button>
+        </div>
+        <div id="logafter1" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person1.html"></a></div>
+        <div id="logafter2" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px"><a href="person2.html"></a></div>
+        <div id="logout" style="display: none;vertical-align: top;margin-left: 10px;font-size:16px;margin-top: 18px;color: blue;border:1px solid lightblue;padding: 6px 8px">退出登录</div>
+    </div>
+</div>
+<div id="content">
+    <div id="high-new-wrapper">
+        <div id="left-content">
+            <div class="left-header">
+				<span>
+					<a href="">网站首页</a>
+					<span>></span>
+					<a href="">课程学习</a>
+					<span>></span>
+					<a href="">课程详情</a>
+				</span>
+            </div>
+            <h2 class="important-news-title">高新区启动 《网络安全法》集中宣传</h2>
+            <div class="important-news-info">
+                <span>来源：《法学实践平台》</span>
+                <span id="timetime">时间：2017-05-23</span>
+            </div>
+            <div class="important-news">
+                <!--<div class="news-img">-->
+                    <!--<img src="img/byu5.png" alt="" />-->
+                <!--</div>-->
+                <p>近日，“蠕虫”式勒索病毒软件让全世界互联网用户都惶恐不安，网络安全话题再次引发强烈关注。6月1日，我国将正式实施《网络安全法》，以法律手段为网络安全保驾护航。结合《网络安全法》的实施，成都高新区近日启动《网络安全法》集中宣传活动。记者从成都高新区发展策划局了解到，此次宣传活动同时在桂溪街道、石羊街道、西园街道和芳草街街道举行，通过现场活动、发放宣传册等多种形式宣传《网络安全法》。</p>
+                <p>5月20日上午，在桂溪街道环球中心，一场“网络安全为人民 网络安全靠人民”主题宣传活动吸引了众多市民。桂溪街道益州社区的工作人员仔细地向市民讲解何为网络安全、如何避免日常生活中常遇到的网络安全隐患知识。展示架上，围绕个人信息安全保障梳理了注意事项;工作人员还现场为市民派了《网络安全法宣传资料》和《个人信息安全防护宣传册》。</p>
+                <p>“你知道如何防范伪基站诈骗吗?”“你知道如何识别钓鱼WiFi吗?”竞猜问答吸引了市民的积极参与。“网络安全太重要了，尤其对我们老年人，对电脑和手机的使用不熟，安全意识不到位，很容易被不法分子利用。”益州社区居民艾子铨告诉记者，她曾经向社区建议，举办网络安全知识宣传培训。“这次活动，我收获很多，回去后还要把资料给其他邻居学习。”</p>
+                <p>通过宣传活动，我们希望让更多市民知晓并理解《网络安全法》，树立网络安全靠大家的意识。”桂溪街道益州社区党总支书记罗王军说，今后社区还将通过新媒体等多种方式，持续开展相关宣传活动。</p>
+                <div class="tool-bar">
+                    <a href=""><span>收藏</span></a><a href=""><span>打印</span></a>
+                </div>
+            </div>
+            <div id="video_content" style="text-align: center">
+
+            </div>
+            <div id="homework" style="text-align: center;display: none;border: 1px solid lightgrey;margin-left: 30px">
+                <div style="font-size:18px">作业</div>
+            </div>
+            <div id="questionList" style="padding-left: 30px;display: none">
+                <div>提问列表</div>
+            </div>
+            <div id="ask" style="display: none">
+                <textarea style="resize: none"></textarea><br>
+                <button type="button" class="btn btn-success" id="askask">提问</button>
+            </div>
+            <div class="turn-page">
+                <span>上一篇：</span>
+                <a href="">宪法理论学习第一章</a><br />
+                <span>下一篇：</span>
+                <a href="">宪法理论学习第二章</a>
+            </div>
+        </div>
+        <div id="right-conten">
+            <div id="right-hot-news">
+                <div class="hot-header">
+                    <span>热点课程</span>
+                </div>
+                <ul class="hot-news-list">
+                    <li><a href="">宪法第一章</a></li>
+                    <li><a href="">刑法第一章</a></li>
+                    <li><a href="">综合法第二章</a></li>
+                    <li><a href="">环境保护法第一章</a></li>
+                    <li><a href="">民法第一章</a></li>
+                    <li><a href="">文法第一章</a></li>
+                    <li><a href="">理学院第一章</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="resources/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/template.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/courseDetail.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/logs.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

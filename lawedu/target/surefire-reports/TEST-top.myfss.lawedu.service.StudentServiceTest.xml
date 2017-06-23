@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="7" failures="0" name="top.myfss.lawedu.service.StudentServiceTest" time="3.321" errors="0" skipped="0">
+  <properties>
+    <property name="idea.version" value="2016.3.2"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="E:\tools\java\jdk\jre\bin"/>
+    <property name="java.vm.version" value="25.5-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\zuozhiwei\Documents\workspace-sts-3.8.2.RELEASE\lawedu"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="idea.launcher.port" value="7532"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\zuozhiwei\Documents\workspace-sts-3.8.2.RELEASE\lawedu"/>
+    <property name="java.runtime.version" value="1.8.0_05-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="E:\tools\java\jdk\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\ZUOZHI~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="classworlds.conf" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.3.2\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="E:\tools\java\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;E:\tools\git\cmd;E:\tools\java\jdk\bin;E:\tools\maven\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\VisualSVN Server\bin;C:\Program Files\SlikSvn\bin;C:\Program Files (x86)\Rational\common;C:\Users\zuozhiwei\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="C:\Users\zuozhiwei"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="idea.launcher.bin.path" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.3.2\bin"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="zuozhiwei"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.5.2.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.3.2\lib\idea_rt.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="E:\tools\java\jdk\jre"/>
+    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=2016.3.2 package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_05"/>
+    <property name="java.ext.dirs" value="E:\tools\java\jdk\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="E:\tools\java\jdk\jre\lib\resources.jar;E:\tools\java\jdk\jre\lib\rt.jar;E:\tools\java\jdk\jre\lib\sunrsasign.jar;E:\tools\java\jdk\jre\lib\jsse.jar;E:\tools\java\jdk\jre\lib\jce.jar;E:\tools\java\jdk\jre\lib\charsets.jar;E:\tools\java\jdk\jre\lib\jfr.jar;E:\tools\java\jdk\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.3.2\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="getExamInfo" time="0.016"/>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="getStudentInfo" time="0"/>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="getAssignmentList" time="0.002"/>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="getExamQuestionList" time="3.255"/>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="getBidProjectList" time="0.002"/>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="checkExamQuestion" time="0.043"/>
+  <testcase classname="top.myfss.lawedu.service.StudentServiceTest" name="getCertificateInfo" time="0.003"/>
+</testsuite>

@@ -1,0 +1,9 @@
+#testContent{
+    width: 1240px;
+    min-width:1240px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+#testContent h2{
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/*表格内页样式*/
+
+fieldset.scheduler-border{border: 1px groove black;padding: 0 1.4em 1.4em 1.4em;margin: 0 0 1.5em 0;}
+legend {
+    width: auto !important;
+}
+legend.scheduler-border{border-bottom:0px;font-size:1.2em;font-weight: bold;}
+.form1 .form-group{float:left;margin-left:5px;}
+.form1 .form-group input{width:120px;}
+.form1 label{display:block;width:100px}
+.text-style{font-size:14px;font-weight:bold; }
+#displayData a{text-decoration:none;}
+
+.ie8 .input-group-addon{
+    float: left;padding: 6px 25px 26px 12px
+}
+.ie7 .form1 .form-group input{
+    height:23px;
+}
+.input-group-addon{
+    height:23px;
+}

@@ -1,0 +1,174 @@
+
+#carousel-example-generic{
+	width:100%;
+	min-width: 1200px;
+	margin-top:90px;
+}
+#carousel-example-generic img{
+	width: 100%;
+	height:350px;
+}
+#carousel-example-generic .right{
+	background: none;
+}
+#carousel-example-generic .left{
+	background: none;
+}
+#carousel-example-generic .glyphicon-chevron-left{
+	margin-left:-50px;
+}
+#carousel-example-generic .glyphicon-chevron-right{
+	margin-right:-50px;
+}
+.carousel-indicators{
+	top:300px;
+}
+.app_content{
+	width:1200px;
+	margin: 0 auto;
+	margin-top:20px;
+	min-width:1200px;
+}
+.app_content .contents{
+	width:1200px;
+	margin: 0 auto;
+	margin-top:20px;
+	min-width:1200px;
+}
+.app_content .nav_span{
+	border-bottom: 1px solid lightgray;
+	margin-bottom:10px;
+}
+.app_content .nav_span .model_name{
+	color:#288add;
+	font-size:24px;
+	border-bottom: 1px solid #288add;
+	padding-bottom:1px;
+}
+.app_content .nav_span .model_num{
+	background: lightgray;
+	border-radius: 15px;
+	padding:1px 10px;
+	color: white;
+	font-weight: bold;
+}
+.app_content .nav_span a{
+	color:#288add;
+	font-size:18px;
+	float: right;
+	margin-top:10px;
+	/*margin-right:50px;*/
+}
+.media{
+	margin-top:4px;
+}
+.app_content_media{
+	/*margin-top:;*/
+	color: gray;
+	width:370px;
+	height: 154px;
+	border: 1px solid #E0E0E0  ;
+	padding: 30px 50px;
+	display: inline-block;
+}
+.app_content_media .media-left img{
+	border: 1px solid gray;
+	width:90px;
+	height:90px;
+}
+.app_content_media .media-body h4{
+	color: black;
+	font-size:20px;
+	font-weight: bold;
+}
+.app_content_media .media-body h4 span{
+	color: white;
+	background:#ffb794;
+	margin-left:15px;
+	padding: 0 5px;
+	font-size:15px;
+	-webkit-border-top-right-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+}
+.app_content_media .media-body .stars{
+	margin-top:10px;
+}
+.app_content_media .media-body .stars label{
+	margin-left: 10px;
+}
+.app_content_media .media-body .chuban span{
+	background:#11c080;
+	padding: 1px 5px;
+	color: white;
+	border-radius:5px;
+}
+.app_content_media .media-body .chuban{
+	margin-top:10px;
+}
+#all_sorts{
+	width:1210px;
+	margin: 0 auto;
+	margin-top: 20px;
+	white-space: nowrap;
+}
+#sell_sort{
+	width: 333px;
+	display: inline-block;
+}
+#star_sort{
+	width: 333px;
+	display: inline-block;
+	margin-left:50px;
+}
+#every_sort{
+	width: 333px;
+	display: inline-block;
+	margin-left:50px;
+}
+#all_sorts .sort_span{
+	font-size:28px;
+	color:dimgray
+}
+
+
+#all_sorts .sort_span span{
+	/*color:;*/
+}
+#all_sorts .sort_div ul li{
+	margin-bottom:10px;
+	border-radius: 9px;
+	padding-left: 0;
+	padding-top:5px;
+	padding-bottom:3px;
+}
+#all_sorts .sort_div ul li:hover{
+	cursor: pointer;
+	border: 1px solid lightskyblue;
+	box-shadow:0 0 1px 1px lightskyblue;
+	
+}
+#all_sorts .sort_div ul li label{
+	background:lightskyblue;
+	padding:1px 10px;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+}
+
+#all_sorts .sort_div ul li .sort_num{
+	color: white;
+}
+#all_sorts .sort_div ul li .sort_app_name{
+	margin-left:20px;
+	font-size:16px;
+}
+
+#all_sorts .sort_div ul li .wz{
+	float: right;
+	margin-right:10px;
+}
+
+#all_sorts .sort_div ul li .sort_nums{
+	float: right;
+	margin-right:10px;
+	color:dodgerblue;
+}
